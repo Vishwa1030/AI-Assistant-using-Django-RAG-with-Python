@@ -4,22 +4,22 @@
 A production-ready intelligent assistant built with Django that analyzes your uploaded documents and answers questions with context-aware responses. Perfect for resumes, reports, research papers, and business documents.
 
 ### Key Points
-1)Smart Document Analysis - Upload PDFs/Word files → Get intelligent insights
+1) Smart Document Analysis - Upload PDFs/Word files → Get intelligent insights
 
-2)Context-Aware Responses - AI understands YOUR documents, not generic answers
+2) Context-Aware Responses - AI understands YOUR documents, not generic answers
 
-3)Unlimited Document Upload - Multiple files, smart context management
+3) Unlimited Document Upload - Multiple files, smart context management
 
-4)Multi-Conversation Threads - Organize chats by topic/project
+4) Multi-Conversation Threads - Organize chats by topic/project
 
-5)Real-time File Processing - Instant text extraction + preview
+5) Real-time File Processing - Instant text extraction + preview
 
-6)Voice Input Support - Speak your questions (speech-to-text)
+6) Voice Input Support - Speak your questions (speech-to-text)
 
-7)Mobile-First Design - Perfect on phones, tablets, desktop
+7) Mobile-First Design - Perfect on phones, tablets, desktop
 
-8)User Authentication - Secure signup/login per user
+8) User Authentication - Secure signup/login per user
 
-9)Professional Interface - Clean gradients, smooth animations
+9) Professional Interface - Clean gradients, smooth animations
 
 
