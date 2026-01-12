@@ -2,7 +2,7 @@
 <div align="center"> <br><br> <img src="https://img.shields.io/badge/Django-5.0-blue.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django"> <img src="https://img.shields.io/badge/Python-3.11-green.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/OpenAI-GPT3.5-yellow.svg?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI"> <img src="https://img.shields.io/badge/HTML-CSS-JS-orange.svg?style=for-the-badge&logo=html5&logoColor=white" alt="Frontend"> </div>
 A production-ready intelligent assistant built with Django that analyzes your uploaded documents and answers questions with context-aware responses. Perfect for resumes, reports, research papers, and business documents!
 
-#Key Points
+### Key Points
 1)Smart Document Analysis - Upload PDFs/Word files → Get intelligent insights
 
 2)Context-Aware Responses - AI understands YOUR documents, not generic answers
