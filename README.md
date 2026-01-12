@@ -7,7 +7,7 @@ A production-ready intelligent assistant built with Django that analyzes your up
 
 1) User Authentication - Secure signup/login per user
   
-2) Context-Aware Responses - AI understands and give generic answers
+2) Context-Aware Responses - AI understands and give answers
 
 3) Smart Document Analysis - Upload PDFs/Word files → Get intelligent insights
 
