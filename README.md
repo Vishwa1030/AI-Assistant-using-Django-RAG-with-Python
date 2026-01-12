@@ -1,6 +1,6 @@
 # AI-Assistant-using-Django-RAG-with-Python
-<div align="center"><img src="<img width="1600" height="820" alt="image" src="https://github.com/user-attachments/assets/7cc5100d-4f56-46f4-91a0-2585c85edf9b" />
-" alt="AI Assistant Demo" width="800"/> <br><br> <img src="https://img.shields.io/badge/Django-5.0-blue.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django"> <img src="https://img.shields.io/badge/Python-3.11-green.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/OpenAI-GPT3.5-yellow.svg?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI"> <img src="https://img.shields.io/badge/HTML-CSS-JS-orange.svg?style=for-the-badge&logo=html5&logoColor=white" alt="Frontend"> </div>
+<div align="center">
+ <img src="https://img.shields.io/badge/Django-5.0-blue.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django"> <img src="https://img.shields.io/badge/Python-3.11-green.svg?style=for-the-badge&logo=python&logoColor=white" alt="Python"> <img src="https://img.shields.io/badge/OpenAI-GPT3.5-yellow.svg?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI"> <img src="https://img.shields.io/badge/HTML-CSS-JS-orange.svg?style=for-the-badge&logo=html5&logoColor=white" alt="Frontend"> </div>
 A production-ready intelligent assistant built with Django that analyzes your uploaded documents and answers questions with context-aware responses. Perfect for resumes, reports, research papers, and business documents!
 
 ### Key Points
