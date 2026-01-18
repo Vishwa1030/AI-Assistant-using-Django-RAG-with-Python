@@ -116,6 +116,9 @@ LOGIN_REDIRECT_URL = '/chat/1/'  # After login
 LOGOUT_REDIRECT_URL = '/login/'
 
 
+#Hosting render
+ALLOWED_HOSTS = ['*']  # For testing (change later)
+DEBUG = False
 
 
 # DEFAULT PRIMARY KEY FIELD
