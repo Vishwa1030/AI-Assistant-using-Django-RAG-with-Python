@@ -97,28 +97,22 @@ USE_TZ = True
 
 
 
-# STATIC FILES
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "chat/static"]
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # ✅ ADD THIS LINE
+STATICFILES_DIRS = [BASE_DIR / 'chat' / 'static']  # ✅ ADD THIS LINE
 
-
-
-
-# MEDIA FILES
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
-
-
-# AUTHENTICATION REDIRECTS
-LOGIN_URL = '/login/'  # Django redirect uses this
-LOGIN_REDIRECT_URL = '/chat/1/'  # After login
-LOGOUT_REDIRECT_URL = '/login/'
-
-
-#Hosting render
-ALLOWED_HOSTS = ['*']  # For testing (change later)
+# For deployment
+ALLOWED_HOSTS = ['*']
 DEBUG = False
+
+
+
+
+# Login URLs
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/chat/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 
 # DEFAULT PRIMARY KEY FIELD
