@@ -1,21 +1,19 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
 from . import views
 
+app_name = 'chat'
+
 urlpatterns = [
-    # HOME = LOGIN FIRST (No chat without login)
-    path('', views.login_view, name='home'),
-    
     path('signup/', views.signup_view, name='signup'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    
-    # Chat (Protected)
-    path('chat/', views.home_redirect_view, name='chat_home'),
+    path('', views.home_redirect_view, name='home'),
     path('chat/<int:thread_id>/', views.chat_view, name='chat'),
-    path('delete-thread/<int:thread_id>/', views.delete_thread, name='delete_thread'),
-    path('clear-history/', views.clear_history, name='clear_history'),
+    path('delete/<int:thread_id>/', views.delete_thread, name='delete_thread'),
+    path('clear/', views.clear_history, name='clear_history'),
+    path('delete-message/<int:message_id>/', views.delete_message, name='delete_message'),
 ]
+
 
     
 

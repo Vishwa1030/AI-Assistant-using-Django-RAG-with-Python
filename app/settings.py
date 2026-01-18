@@ -103,6 +103,7 @@ STATICFILES_DIRS = [BASE_DIR / "chat/static"]
 
 
 
+
 # MEDIA FILES
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -110,9 +111,10 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 
 # AUTHENTICATION REDIRECTS
-LOGIN_URL = "/login/"
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/login/"
+LOGIN_URL = '/login/'  # Django redirect uses this
+LOGIN_REDIRECT_URL = '/chat/1/'  # After login
+LOGOUT_REDIRECT_URL = '/login/'
+
 
 
 
@@ -123,4 +125,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # OPENAI API KEY
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "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"

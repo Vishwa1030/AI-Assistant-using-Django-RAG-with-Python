@@ -3,105 +3,65 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Chat {{ thread.title }}</title>
+    <title>AI Chat</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-<div class="app">
-
-    <!-- LEFT: sidebar with history -->
+<div class="chat-app">
+    <!-- SIDEBAR -->
     <aside class="sidebar">
-        <div class="brand">
-            <h1>Chat Library</h1>
+        <div class="sidebar-header">
+            <form method="post" class="new-chat-form" id="new-chat-form">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="new_chat">
+                <button type="submit" class="btn primary">+ New chat</button>
+            </form>
         </div>
 
-        <form method="post" class="new-chat-form">
-            {% csrf_token %}
-            <input type="hidden" name="action" value="new_chat">
-            <button class="btn primary" type="submit">+ New chat</button>
-        </form>
-
-        <h3 class="sidebar-title">Your chats</h3>
-        <ul class="thread-list">
-            {% for t in threads %}
-                <li class="thread-item {% if t.id == thread.id %}active{% endif %}">
-                    <a href="{% url 'chat' t.id %}" class="thread-link">        
-                        {{ t.title }}
-                    </a>
-                    <div class="thread-actions" aria-hidden="true">
-                        <form method="post" action="{% url 'delete_thread' t.id %}"
-                              onsubmit="return confirm('Delete this thread?');">
-                            {% csrf_token %}
-                            <button type="submit" class="delete-btn" title="Delete">⛔</button>
-                        </form>
-                    </div>
-                </li>
-            {% empty %}
-                <li class="empty">No chats yet.</li>
-            {% endfor %}
+        <ul class="thread-list" id="thread-list">
+            <!-- ✅ JS will populate - NO Django content -->
         </ul>
 
-        <form method="post" action="{% url 'clear_history' %}"
-              onsubmit="return confirm('Clear all chat history?');">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Clear all</button>
-        </form>
-
         <footer class="sidebar-footer">
-            <span class="user-name">{{ request.user.username }}</span>
-            <a href="{% url 'logout' %}" class="logout">Logout</a>
+            <span>👤 {{ request.user.username }}</span>
+            <a href="{% url 'chat:logout' %}" class="logout-btn">Logout</a>
         </footer>
     </aside>
 
-    <!-- RIGHT: conversation area -->
-    <main class="main">
-        <div class="main-inner">
-            <header class="main-header">
-                <h2>{{ thread.title }}</h2>
-            </header>
-
-            <div class="chat-shell">
-                <div class="chat-panel">
-                    <section class="conversation">
-                        <div class="messages" id="messages">
-                            {% for m in messages %}
-                                <div class="message {% if m.from_user %}user{% else %}bot{% endif %}">
-                                    <div class="bubble">
-                                        {{ m.text|linebreaks }}
-                                    </div>
-                                </div>
-                            {% empty %}
-                                <div class="placeholder">
-                                    <p>Hi {{ request.user.username }}, I am your AI Chatbot. Upload documents or ask me anything!</p>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </section>
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <main class="chat-main">
+            <div class="messages-container">
+                <div class="messages" id="messages">
+                    <!-- ✅ JS will populate - Clean empty -->
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <!-- BOTTOM COMPOSER -->
-    <div class="composer-wrapper">
-        <div class="composer-shell">
+        <!-- COMPOSER -->
+        <div class="composer-container">
             <form class="composer" method="post" id="chat-form" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="hidden" name="action" value="send">
                 <input type="hidden" name="transcript" id="transcript">
                 
                 <div class="message-input-container">
-                    <label for="doc-upload" class="upload-icon-overlay" title="Upload Files">+</label>
-                    <input type="file" name="doc_file" id="doc-upload" 
-                           accept=".txt,.pdf,.docx,.md,.csv,.xml" multiple>
-                    
-                    <input type="text" name="message" id="message-input"
-                           placeholder="Type your message... (or upload files)" autocomplete="off">
+                    <label for="doc-upload" class="upload-icon-overlay" title="Upload documents">+</label>
+                    <input type="file" name="doc_file" id="doc-upload" accept=".pdf,.txt,.docx,.md" multiple>
+                    <input type="text" name="message" id="message-input" placeholder="Ask anything..." autocomplete="off">
                 </div>
 
-                <button type="button" class="btn mic" id="mic-btn" title="Speak">🎙️</button>
-                <button class="btn send" type="submit" id="send-btn">Send</button>
+                <div class="mic-container" id="mic-container">
+                    <button type="button" class="btn mic" id="mic-btn" title="Voice input">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M19 11a7 7 0 0 1-14 0" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 21v-3" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="btn send" type="submit" id="send-btn" disabled>Send</button>
             </form>
         </div>
     </div>

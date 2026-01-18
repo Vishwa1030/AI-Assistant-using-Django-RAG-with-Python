@@ -1,30 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+import re
 
 class Thread(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100, default="New chat")
+    title = models.CharField(max_length=200, default="New Chat")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='threads')
     created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.title}"
+    updated_at = models.DateTimeField(auto_now=True)  
+    
+    class Meta:
+        ordering = ['-updated_at']  #
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 class Message(models.Model):
-    thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name="messages")
-    from_user = models.BooleanField(default=True)  
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name='messages')
+    from_user = models.BooleanField(default=False)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        who = "User" if self.from_user else "Bot"
-        return f"{who}: {self.text[:20]}"
 
 class Document(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     content = models.TextField()
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.title}"
+    created_at = models.DateTimeField(auto_now_add=True)
